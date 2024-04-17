@@ -96,7 +96,7 @@ export default function Main() {
             <Item4 column="3/4" row="2/3" responsive="4/5">
                 <Image src="../src/assets/accessories.png"/>
                 <Title>Accessories</Title>
-                <CategoryLink to='/shop/accesories'>Shop now</CategoryLink>
+                <CategoryLink to='/shop/accessories'>Shop now</CategoryLink>
             </Item4>
         </Container>
     )

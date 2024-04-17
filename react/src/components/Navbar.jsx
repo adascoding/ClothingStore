@@ -4,6 +4,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Badge from '@mui/material/Badge';
 import styled from "styled-components";
 import { Link } from "react-router-dom"
+import { useSelector } from 'react-redux';
 
 const Container = styled.div`
     height: 60px;
@@ -38,18 +39,20 @@ const CategoryLink = styled(Link)`
         text-decoration: underline;
     }
 `
-
 const Right = styled.div`
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: right;
 `
-const IconWrapper = styled.div`
+const IconWrapper = styled(Link)`
     margin-right: 10px;
+    color: black;
 `
 
 export default function Navbar() {
+
+    const cartItemsCount = useSelector(state => state.cart.products.length)
     return (
         <Container>
             <Wrapper>
@@ -57,9 +60,8 @@ export default function Navbar() {
                     <HomeLink to="/">CLOTHING STORE.</HomeLink>
                 </Left>
                 <Center>
+                    <CategoryLink to='/'>Home</CategoryLink>
                     <CategoryLink to='/shop'>Shop</CategoryLink>
-                    <CategoryLink to='/'>Support</CategoryLink>
-                    <CategoryLink to=''>About</CategoryLink>
                 </Center>
                 <Right>
                     <IconWrapper>
@@ -68,8 +70,8 @@ export default function Navbar() {
                     <IconWrapper>
                         <PersonOutlineOutlinedIcon />
                     </IconWrapper>
-                    <IconWrapper>
-                        <Badge color="primary" badgeContent={3}>
+                    <IconWrapper to='/cart'>
+                        <Badge color="primary" badgeContent={cartItemsCount}>
                             <ShoppingCartOutlinedIcon />
                         </Badge>
                     </IconWrapper>
